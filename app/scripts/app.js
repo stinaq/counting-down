@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('countingDown', ['countingDown.controllers', 'ngRoute'])
+angular.module('countingDown', ['countingDown.controllers', 'ngRoute', 'angular-momentjs'])
 .config(function ($routeProvider) {
   $routeProvider
     .when('/', {
