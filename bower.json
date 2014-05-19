@@ -4,8 +4,9 @@
   "dependencies": {
     "jquery": "~2.0.3",
     "angular": "~1.2.14",
-    "angular-route": "~1.2.14"
+    "angular-route": "~1.2.14",
+    "momentjs": "~2.6.0",
+    "angular-momentjs": "~0.1.8"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
