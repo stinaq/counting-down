@@ -8,8 +8,8 @@ angular.module('countingDown', ['countingDown.controllers', 'ngRoute', 'angular-
       controller: 'StartCtrl'
     })
     .otherwise({
-      templateUrl: 'views/start.html',
-      controller: 'InputCtrl'
+      templateUrl: 'views/timeLeft.html',
+      controller: 'TimeLeftCtrl'
     });
 });
 
