@@ -13,6 +13,10 @@ angular.module('countingDown.controllers')
   $scope.minutes = 0;
   $scope.seconds = 0;
 
+  var secondsPerYear = 31557600;
+  var secondsPerDay = 86400;
+  var secondsPerHour = 3600;
+  var secondsPerMinute = 60;
   var tickDown = function() {
     var now = $moment();
     var endTime = $moment.unix(testTime);
