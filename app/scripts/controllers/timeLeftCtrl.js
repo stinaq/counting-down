@@ -30,6 +30,27 @@ angular.module('countingDown.controllers')
     };
   };
 
+
+  var parseSecondsToPrettyTime = function (seconds) {
+
+    var time = {};
+
+    var tmp = quotientWithRemainder(seconds, secondsPerYear);
+    time.years = tmp.quotient;
+
+    tmp = quotientWithRemainder(tmp.remainder, secondsPerDay);
+    time.days = tmp.quotient;
+
+    tmp = quotientWithRemainder(tmp.remainder, secondsPerHour);
+    time.hours = tmp.quotient;
+
+    tmp = quotientWithRemainder(tmp.remainder, secondsPerMinute);
+    time.minutes = tmp.quotient;
+
+    time.seconds = tmp.remainder;
+    return time;
+  };
+
   var tickDown = function() {
     var now = $moment();
     var endTime = $moment.unix(testTime);
