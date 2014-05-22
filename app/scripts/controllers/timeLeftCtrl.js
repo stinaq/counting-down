@@ -17,6 +17,19 @@ angular.module('countingDown.controllers')
   var secondsPerDay = 86400;
   var secondsPerHour = 3600;
   var secondsPerMinute = 60;
+
+  var quotientWithRemainder = function (numerator, denominator) {
+
+    var remainder = numerator % denominator;
+    var temp = numerator - remainder;
+    var quotient = temp / denominator;
+
+    return {
+      quotient: quotient,
+      remainder: remainder
+    };
+  };
+
   var tickDown = function() {
     var now = $moment();
     var endTime = $moment.unix(testTime);
