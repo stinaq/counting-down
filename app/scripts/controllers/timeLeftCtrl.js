@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('countingDown.controllers')
-.controller('TimeLeftCtrl', function ($scope, $timeout, $moment) {
+.controller('TimeLeftCtrl', function ($scope, $timeout, $moment, $location) {
 
   var testTime = 1411088460;
+  var unixTime = 0;
+  $scope.title = 'Ooops';
 
   $scope.years = 0;
   $scope.days = 0;
@@ -26,6 +28,10 @@ angular.module('countingDown.controllers')
       quotient: quotient,
       remainder: remainder
     };
+  };
+
+  $scope.printLocation = function () {
+    console.log($location);
   };
 
 
@@ -65,8 +71,17 @@ angular.module('countingDown.controllers')
     $timeout(tickDown, 1000);
   };
 
-  $timeout(tickDown, 1000);
 
-  $scope.a = 'sodfuh';
+
+  var init = function () {
+    var queryStrings = $location.search();
+    console.log(queryStrings);
+    $scope.title = queryStrings.title;
+
+    testTime = queryStrings.unix;
+    $timeout(tickDown, 1000);
+  }
+
+  init();
 
 });
