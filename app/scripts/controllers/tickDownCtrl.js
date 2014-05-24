@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('countingDown.controllers')
-.controller('TimeLeftCtrl', function ($scope, $timeout, $moment, $location) {
+.controller('TickDownCtrl', function ($scope, $timeout, $moment, $location) {
 
   var testTime = 1411088460;
   var unixTime = 0;
@@ -31,6 +31,7 @@ angular.module('countingDown.controllers')
   };
 
   $scope.printLocation = function () {
+    $location.search({test:'erik'});
     console.log($location);
   };
 

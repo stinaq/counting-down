@@ -13,8 +13,13 @@
   <!-- endbuild -->
   </head>
   <body ng-app="countingDown">
-    <h1>counting down</h1>
-    <div ng-view=""></div>
+    <main ng-controller="MainCtrl">
+      <h1>counting down</h1>
+
+      <h3>{{ stina }}</h3>
+    </main>
+
+
     <script src="bower_components/jquery/jquery.js"></script>
     <!-- build:js scripts/plugins.js -->
 
@@ -29,10 +34,7 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-
-    <script src="scripts/controllers/inputCtrl.js"></script>
-    <script src="scripts/controllers/timeLeftCtrl.js"></script>
-
+    <script src="scripts/controllers/mainCtrl.js"></script>
     <!-- endbuild -->
   </body>
 </html>
