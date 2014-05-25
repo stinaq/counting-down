@@ -41,12 +41,19 @@
 
         </form>
 
+        Date: {{ timeDateInput }}
+
         <button ng-click="handleStart()">Start counting down</button>
       </section>
 
       <section ng-show="hasValidDate">
-        <h2>{{ timeDate }}
-        <h2>{{ title }}
+        <h1>Counting down to {{ title }}</h1>
+
+        years: {{ years }} <br>
+        days: {{ days }} <br>
+        hours: {{ hours }} <br>
+        minutes: {{ minutes }} <br>
+        seconds: {{ seconds }} <br>
       </section>
 
     </main>
