@@ -18,6 +18,15 @@ angular.module('countingDown.controllers')
   var secondsPerDay = 86400;
   var secondsPerHour = 3600;
   var secondsPerMinute = 60;
+  var setQueryStringParams = function (title, unixTime) {
+    var encodedTitle = encodeURIComponent(title);
+
+    $location.search({
+      title: encodedTitle,
+      t: unixTime
+    });
+  };
+
 
   $scope.handleStart = function () {
     $scope.hasValidDate = true;
