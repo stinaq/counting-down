@@ -21,21 +21,14 @@
         <input ng-model="title" placeholder="To what?">
         <form name="timepickerForm" class="form-inline" role="form">
 
-          <!-- Custom example -->
-          <div class="form-group" ng-class="{'has-error': timepickerForm.time2.$invalid}">
-            <label class="control-label"><i class="fa fa-clock-o"></i> Time <small>(as number)</small></label>
-            <input class="form-control" size="5" ng-model="selectedTimeAsNumber" data-time-format="HH:mm" data-time-type="number" data-min-time="10:00" data-max-time="13:30" data-autoclose="1" name="time2" bs-timepicker type="text">
-          </div>
-          <hr>
-
           <!-- Datetime example -->
           <div class="form-group">
             <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
             <div class="form-group">
-              <input size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker type="text">
+              <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today">
             </div>
             <div class="form-group">
-              <input size="8" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Time" bs-timepicker type="text">
+              <input type="text" size="8" class="form-control" ng-model="timeDateInput" data-time-format="HH:mm" data-autoclose="1" placeholder="Time" bs-timepicker>
             </div>
           </div>
 
