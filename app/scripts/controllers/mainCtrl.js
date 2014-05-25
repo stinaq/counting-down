@@ -99,4 +99,16 @@ angular.module('countingDown.controllers')
     }
   };
 
+  var validateQueryStringParams = function (queryStringUnix, queryStringTitle) {
+    var parsedString = parseInt(queryStringUnix, 10);
+    if (!isNaN(parsedString) && parsedString > 0) {
+      validateTitle(queryStringTitle);
+      $scope.hasValidDate = true;
+      unixTime = parsedString;
+      return true;
+    }
+
+    return false;
+  };
+
 });
