@@ -37,6 +37,9 @@ angular.module('countingDown.controllers')
 
 
   $scope.handleStart = function () {
+    unixTime = convertTimeToUnix($scope.timeDateInput);
+    setQueryStringParams($scope.title, unixTime);
+    startCountDown();
     $scope.hasValidDate = true;
   };
 
@@ -110,5 +113,18 @@ angular.module('countingDown.controllers')
 
     return false;
   };
+
+  var startCountDown = function () {
+    $timeout(countDown, 1000);
+  };
+
+  var init = function () {
+    var queryStrings = $location.search();
+    if (validateQueryStringParams(queryStrings.t, queryStrings.title)) {
+      startCountDown();
+    }
+  };
+
+  init();
 
 });
