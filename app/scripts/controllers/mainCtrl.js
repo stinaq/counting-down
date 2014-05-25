@@ -12,6 +12,10 @@ angular.module('countingDown.controllers')
   $scope.seconds = 0;
 
   $scope.hasValidDate = false;
+  var secondsPerYear = 31557600;
+  var secondsPerDay = 86400;
+  var secondsPerHour = 3600;
+  var secondsPerMinute = 60;
 
   $scope.handleStart = function () {
     $scope.hasValidDate = true;
