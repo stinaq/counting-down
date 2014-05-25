@@ -18,6 +18,8 @@ angular.module('countingDown.controllers')
   var secondsPerDay = 86400;
   var secondsPerHour = 3600;
   var secondsPerMinute = 60;
+  var unixTime = 0;
+
   var setQueryStringParams = function (title, unixTime) {
     var encodedTitle = encodeURIComponent(title);
 
@@ -26,6 +28,12 @@ angular.module('countingDown.controllers')
       t: unixTime
     });
   };
+
+  var convertTimeToUnix = function (dateTime) {
+    var momentTime = $moment(dateTime);
+    return momentTime.unix();
+  };
+
 
 
   $scope.handleStart = function () {
