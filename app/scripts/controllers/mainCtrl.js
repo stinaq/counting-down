@@ -40,6 +40,56 @@ angular.module('countingDown.controllers')
     $scope.hasValidDate = true;
   };
 
+
+
+  var quotientWithRemainder = function (numerator, denominator) {
+
+    var remainder = numerator % denominator;
+    var temp = numerator - remainder;
+    var quotient = temp / denominator;
+
+    return {
+      quotient: quotient,
+      remainder: remainder
+    };
+  };
+
+  var parseSecondsToPrettyTime = function (seconds) {
+
+    var time = {};
+
+    var tmp = quotientWithRemainder(seconds, secondsPerYear);
+    time.years = tmp.quotient;
+
+    tmp = quotientWithRemainder(tmp.remainder, secondsPerDay);
+    time.days = tmp.quotient;
+
+    tmp = quotientWithRemainder(tmp.remainder, secondsPerHour);
+    time.hours = tmp.quotient;
+
+    tmp = quotientWithRemainder(tmp.remainder, secondsPerMinute);
+    time.minutes = tmp.quotient;
+
+    time.seconds = tmp.remainder;
+    return time;
+  };
+
+  var countDown = function() {
+    var now = $moment();
+    var endTime = $moment.unix(unixTime);
+    var sumSeconds = endTime.diff(now, 'seconds');
+
+    var parsedTime = parseSecondsToPrettyTime(sumSeconds);
+
+    $scope.years = parsedTime.years;
+    $scope.days = parsedTime.days;
+    $scope.hours = parsedTime.hours;
+    $scope.minutes = parsedTime.minutes;
+    $scope.seconds = parsedTime.seconds;
+
+    $timeout(countDown, 1000);
+  };
+
   var validateTitle = function (title) {
     if (title === 'undefined' || title === 'null' || title === '') {
       $scope.hasValidTitle = false;
