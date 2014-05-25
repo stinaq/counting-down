@@ -12,6 +12,8 @@ angular.module('countingDown.controllers')
   $scope.seconds = 0;
 
   $scope.hasValidDate = false;
+  $scope.hasValidTitle = false;
+
   var secondsPerYear = 31557600;
   var secondsPerDay = 86400;
   var secondsPerHour = 3600;
@@ -19,6 +21,15 @@ angular.module('countingDown.controllers')
 
   $scope.handleStart = function () {
     $scope.hasValidDate = true;
+  };
+
+  var validateTitle = function (title) {
+    if (title === 'undefined' || title === 'null' || title === '') {
+      $scope.hasValidTitle = false;
+      $scope.title = '';
+    } else {
+      $scope.title = title;
+    }
   };
 
 });
