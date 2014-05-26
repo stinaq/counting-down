@@ -13,6 +13,7 @@ angular.module('countingDown.controllers')
 
   $scope.hasValidDate = false;
   $scope.hasValidTitle = false;
+  $scope.timeHasPassed = false;
 
   var secondsPerYear = 31557600;
   var secondsPerDay = 86400;
@@ -81,6 +82,12 @@ angular.module('countingDown.controllers')
     var now = $moment();
     var endTime = $moment.unix(unixTime);
     var sumSeconds = endTime.diff(now, 'seconds');
+
+    if (sumSeconds < 0) {
+      $scope.timeHasPassed = true;
+      $scope.hasValidDate = false;
+      return;
+    }
 
     var parsedTime = parseSecondsToPrettyTime(sumSeconds);
 
