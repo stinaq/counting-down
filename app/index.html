@@ -47,11 +47,13 @@
       <section ng-show="hasValidDate">
         <h1>Counting down to {{ title }}</h1>
 
-        years: {{ years }} <br>
-        days: {{ days }} <br>
-        hours: {{ hours }} <br>
-        minutes: {{ minutes }} <br>
-        seconds: {{ seconds }} <br>
+        <span ng-show="shouldBeDisplayed('years')">years: {{ years }} <br></span>
+        <span ng-show="shouldBeDisplayed('days')">days: {{ days }} <br></span>
+        <span ng-show="shouldBeDisplayed('hours')">hours: {{ hours }} <br></span>
+        <span ng-show="shouldBeDisplayed('minutes')">minutes: {{ minutes }} <br></span>
+        <span ng-show="shouldBeDisplayed('seconds')">seconds: {{ seconds }} <br></span>
+
+        <input type="checkbox" ng-model="showZeros">
       </section>
 
     </main>
