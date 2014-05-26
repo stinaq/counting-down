@@ -17,6 +17,11 @@
   <body ng-app="countingDown">
     <main ng-controller="MainCtrl">
 
+      <section ng-show="timeHasPassed">
+        Aww, that time has passed
+        Enter a new one?
+      </section>
+
       <section ng-hide="hasValidDate">
         <input ng-model="title" placeholder="To what?">
         <form name="timepickerForm" class="form-inline" role="form">
