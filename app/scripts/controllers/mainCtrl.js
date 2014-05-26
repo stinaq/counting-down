@@ -4,12 +4,13 @@ angular.module('countingDown.controllers')
 .controller('MainCtrl', function ($scope, $timeout, $moment, $location) {
 
   $scope.timeDateInput = '';
-  $scope.title = 'hgf';
+  $scope.title = '';
   $scope.years = 0;
   $scope.days = 0;
   $scope.hours = 0;
   $scope.minutes = 0;
   $scope.seconds = 0;
+  $scope.showZeros = false;
 
   $scope.hasValidDate = false;
   $scope.hasValidTitle = false;
@@ -35,8 +36,6 @@ angular.module('countingDown.controllers')
     return momentTime.unix();
   };
 
-
-
   $scope.handleStart = function () {
     unixTime = convertTimeToUnix($scope.timeDateInput);
     setQueryStringParams($scope.title, unixTime);
@@ -44,7 +43,12 @@ angular.module('countingDown.controllers')
     $scope.hasValidDate = true;
   };
 
-
+  $scope.shouldBeDisplayed = function (element) {
+    if ($scope[element] !== 0 || $scope.showZeros) {
+      return true;
+    }
+    return false;
+  };
 
   var quotientWithRemainder = function (numerator, denominator) {
 
@@ -79,6 +83,7 @@ angular.module('countingDown.controllers')
   };
 
   var countDown = function() {
+
     var now = $moment();
     var endTime = $moment.unix(unixTime);
     var sumSeconds = endTime.diff(now, 'seconds');
@@ -105,7 +110,8 @@ angular.module('countingDown.controllers')
       $scope.hasValidTitle = false;
       $scope.title = '';
     } else {
-      $scope.title = title;
+
+      $scope.title = decodeURIComponent(title);
     }
   };
 
