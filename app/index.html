@@ -16,46 +16,50 @@
   </head>
   <body ng-app="countingDown">
     <main ng-controller="MainCtrl">
+      <div class="top-bar">
+        <div class="counter-container">
 
-      <section ng-show="timeHasPassed">
-        Aww, that time has passed
-        Enter a new one?
-      </section>
+          <section ng-show="timeHasPassed">
+            Aww, that time has passed
+            Enter a new one?
+          </section>
 
-      <section ng-hide="hasValidDate">
-        <input ng-model="title" placeholder="To what?">
-        <form name="timepickerForm" class="form-inline" role="form">
+          <section ng-hide="hasValidDate">
+            <input ng-model="title" placeholder="To what?">
+            <form name="timepickerForm" class="form-inline" role="form">
 
-          <!-- Datetime example -->
-          <div class="form-group">
-            <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
-            <div class="form-group">
-              <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today">
-            </div>
-            <div class="form-group">
-              <input type="text" size="8" class="form-control" ng-model="timeDateInput" data-time-format="HH:mm" data-autoclose="1" placeholder="Time" bs-timepicker>
-            </div>
-          </div>
+              <!-- Datetime example -->
+              <div class="form-group">
+                <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
+                <div class="form-group">
+                  <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today">
+                </div>
+                <div class="form-group">
+                  <input type="text" size="8" class="form-control" ng-model="timeDateInput" data-time-format="HH:mm" data-autoclose="1" placeholder="Time" bs-timepicker>
+                </div>
+              </div>
 
-        </form>
+            </form>
 
-        Date: {{ timeDateInput }}
+            Date: {{ timeDateInput }}
 
-        <button ng-click="handleStart()">Start counting down</button>
-      </section>
+            <button ng-click="handleStart()">Start counting down</button>
+          </section>
 
-      <section ng-show="hasValidDate">
-        <h1>Counting down to {{ title }}</h1>
+          <section ng-show="hasValidDate">
+            <h1>Counting down to {{ title }}</h1>
 
-        <span ng-show="shouldBeDisplayed('years')">years: {{ years }} <br></span>
-        <span ng-show="shouldBeDisplayed('days')">days: {{ days }} <br></span>
-        <span ng-show="shouldBeDisplayed('hours')">hours: {{ hours }} <br></span>
-        <span ng-show="shouldBeDisplayed('minutes')">minutes: {{ minutes }} <br></span>
-        <span ng-show="shouldBeDisplayed('seconds')">seconds: {{ seconds }} <br></span>
+            <span ng-show="shouldBeDisplayed('years')">years: {{ years }} <br></span>
+            <span ng-show="shouldBeDisplayed('days')">days: {{ days }} <br></span>
+            <span ng-show="shouldBeDisplayed('hours')">hours: {{ hours }} <br></span>
+            <span ng-show="shouldBeDisplayed('minutes')">minutes: {{ minutes }} <br></span>
+            <span>seconds: {{ seconds }} <br></span>
 
-        <input type="checkbox" ng-model="showZeros">
-      </section>
+            <input type="checkbox" ng-model="showZeros">
+          </section>
 
+        </div>
+      </div>
     </main>
 
 
