@@ -47,13 +47,52 @@
           </section>
 
           <section ng-show="hasValidDate">
-            <h1>Counting down to {{ title }}</h1>
 
-            <span ng-show="shouldBeDisplayed('years')">years: {{ years }} <br></span>
-            <span ng-show="shouldBeDisplayed('days')">days: {{ days }} <br></span>
-            <span ng-show="shouldBeDisplayed('hours')">hours: {{ hours }} <br></span>
-            <span ng-show="shouldBeDisplayed('minutes')">minutes: {{ minutes }} <br></span>
-            <span>seconds: {{ seconds }} <br></span>
+            <div class="counter-outer-container">
+              <div class="item-container" ng-show="shouldBeDisplayed('years')">
+                <div class="counter-number">
+                  {{ years }}
+                </div>
+                <div class="counter-description">
+                  years
+                </div>
+              </div>
+              <div class="item-container" ng-show="shouldBeDisplayed('days')">
+                <div class="counter-number">
+                  {{ days }}
+                </div>
+                <div class="counter-description">
+                  days
+                </div>
+              </div>
+              <div class="item-container" ng-show="shouldBeDisplayed('hours')">
+                <div class="counter-number">
+                  {{ hours }}
+                </div>
+                <div class="counter-description">
+                  hours
+                </div>
+              </div>
+              <div class="item-container" ng-show="shouldBeDisplayed('minutes')">
+                <div class="counter-number">
+                  {{ minutes }}
+                </div>
+                <div class="counter-description">
+                  minutes
+                </div>
+              </div>
+              <div class="item-container">
+                <div class="counter-number">
+                  {{ seconds }}
+                </div>
+                <div class="counter-description">
+                  seconds
+                </div>
+              </div>
+            </div>
+
+            <h1>Counting down to {{ title }}</h1>
+            {{ endTime }}</h1>
 
             <input type="checkbox" ng-model="showZeros">
           </section>
