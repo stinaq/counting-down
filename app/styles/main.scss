@@ -1,9 +1,36 @@
 
 .top-bar {
-  background: #44276E;
+  background: #D69C1E;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
+  height: 400px;
   color: #fff;
+}
+
+.counter-container {
+  display: flex;
+}
+
+.counter-outer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+  min-width: 90px;
+}
+
+.counter-number {
+  display: flex;
+  justify-content: center;
+  font-size: 5em;
+}
+
+.counter-description {
+  display: flex;
+  justify-content: center;
 }
