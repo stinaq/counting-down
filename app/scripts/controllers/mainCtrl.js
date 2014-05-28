@@ -92,6 +92,9 @@ angular.module('countingDown.controllers')
       $scope.timeHasPassed = true;
       $scope.hasValidDate = false;
       return;
+    } else {
+      $scope.timeHasPassed = false;
+      $scope.hasValidDate = true;
     }
 
     var parsedTime = parseSecondsToPrettyTime(sumSeconds);
@@ -128,6 +131,7 @@ angular.module('countingDown.controllers')
   };
 
   var startCountDown = function () {
+    $scope.endTime = $moment.unix(unixTime).format("dddd, MMMM Do YYYY, h:mm:ss");
     $timeout(countDown, 1000);
   };
 
