@@ -10,16 +10,17 @@ angular.module('countingDown.controllers')
   $scope.hours = 0;
   $scope.minutes = 0;
   $scope.seconds = 0;
-  $scope.showZeros = false;
+  $scope.secondsLeft = 0;
 
+  $scope.showZeros = false;
   $scope.hasValidDate = false;
   $scope.hasValidTitle = false;
   $scope.timeHasPassed = false;
 
-  var secondsPerYear = 31557600;
-  var secondsPerDay = 86400;
-  var secondsPerHour = 3600;
-  var secondsPerMinute = 60;
+  $scope.secondsPerYear = 31557600;
+  $scope.secondsPerDay = 86400;
+  $scope.secondsPerHour = 3600;
+  $scope.secondsPerMinute = 60;
   var unixTime = 0;
 
   var setQueryStringParams = function (title, unixTime) {
@@ -43,8 +44,10 @@ angular.module('countingDown.controllers')
     $scope.hasValidDate = true;
   };
 
-  $scope.shouldBeDisplayed = function (element) {
-    if ($scope[element] !== 0 || $scope.showZeros) {
+  $scope.shouldBeDisplayed = function (numberOfSeconds) {
+    var temp = $scope.secondsLeft / numberOfSeconds;
+
+    if (temp >= 1 || $scope.showZeros) {
       return true;
     }
     return false;
@@ -66,16 +69,16 @@ angular.module('countingDown.controllers')
 
     var time = {};
 
-    var tmp = quotientWithRemainder(seconds, secondsPerYear);
+    var tmp = quotientWithRemainder(seconds, $scope.secondsPerYear);
     time.years = tmp.quotient;
 
-    tmp = quotientWithRemainder(tmp.remainder, secondsPerDay);
+    tmp = quotientWithRemainder(tmp.remainder, $scope.secondsPerDay);
     time.days = tmp.quotient;
 
-    tmp = quotientWithRemainder(tmp.remainder, secondsPerHour);
+    tmp = quotientWithRemainder(tmp.remainder, $scope.secondsPerHour);
     time.hours = tmp.quotient;
 
-    tmp = quotientWithRemainder(tmp.remainder, secondsPerMinute);
+    tmp = quotientWithRemainder(tmp.remainder, $scope.secondsPerMinute);
     time.minutes = tmp.quotient;
 
     time.seconds = tmp.remainder;
@@ -95,6 +98,7 @@ angular.module('countingDown.controllers')
     } else {
       $scope.timeHasPassed = false;
       $scope.hasValidDate = true;
+      $scope.secondsLeft = sumSeconds;
     }
 
     var parsedTime = parseSecondsToPrettyTime(sumSeconds);
