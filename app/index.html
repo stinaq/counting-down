@@ -91,16 +91,32 @@
               </div>
             </div>
 
-            <h1>Counting down to {{ title }}</h1>
-            {{ endTime }}</h1>
+            <div class="counter-title-container">
+              <p class="counter-title-paragraph">Counting down to
+                <span class="counter-title">{{ title }}</span><br>
+                <span ng-show="showZeros">{{ endTime }}</span>
+              </p>
+            </div>
 
-            <input type="checkbox" ng-model="showZeros">
           </section>
 
         </div>
       </div>
-    </main>
 
+      <!-- Squared THREE checkbox, borrowed from cssdeck http://cssdeck.com/labs/css-checkbox-styles -->
+      <div class="show-zeros-container">
+
+        <div class="squaredThree">
+          <input type="checkbox" value="None" id="squaredThree" name="check" ng-model="showZeros" />
+          <label for="squaredThree"></label>
+
+        </div>
+        <span class="info-text">
+          Show more
+        </span>
+      </div>
+
+    </main>
 
     <script src="bower_components/jquery/jquery.js"></script>
     <!-- build:js scripts/plugins.js -->
