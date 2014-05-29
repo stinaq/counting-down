@@ -49,7 +49,7 @@
           <section ng-show="hasValidDate">
 
             <div class="counter-outer-container">
-              <div class="item-container" ng-show="shouldBeDisplayed('years')">
+              <div class="item-container" ng-show="shouldBeDisplayed(secondsPerYear)">
                 <div class="counter-number">
                   {{ years }}
                 </div>
@@ -57,7 +57,7 @@
                   years
                 </div>
               </div>
-              <div class="item-container" ng-show="shouldBeDisplayed('days')">
+              <div class="item-container" ng-show="shouldBeDisplayed(secondsPerDay)">
                 <div class="counter-number">
                   {{ days }}
                 </div>
@@ -65,7 +65,7 @@
                   days
                 </div>
               </div>
-              <div class="item-container" ng-show="shouldBeDisplayed('hours')">
+              <div class="item-container" ng-show="shouldBeDisplayed(secondsPerHour)">
                 <div class="counter-number">
                   {{ hours }}
                 </div>
@@ -73,7 +73,7 @@
                   hours
                 </div>
               </div>
-              <div class="item-container" ng-show="shouldBeDisplayed('minutes')">
+              <div class="item-container" ng-show="shouldBeDisplayed(secondsPerMinute)">
                 <div class="counter-number">
                   {{ minutes }}
                 </div>
