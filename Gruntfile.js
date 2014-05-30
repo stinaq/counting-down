@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass']
+        tasks: ['sass', 'autoprefixer']
       },
       livereload: {
         options: {
@@ -44,6 +44,17 @@ module.exports = function (grunt) {
           '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      styles: {
+        files: ['{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css'],
+        tasks: ['autoprefixer']
+      }
+    },
+    autoprefixer: {
+      dev: {
+        files: {
+          '.tmp/styles/main.css': '.tmp/styles/main.css'
+        }
       }
     },
     connect: {
@@ -233,13 +244,15 @@ module.exports = function (grunt) {
     },
     concurrent: {
       server: [
-        'sass'
+        'sass',
+        'autoprefixer'
       ],
       test: [
         'sass'
       ],
       dist: [
         'sass',
+        'autoprefixer',
         'imagemin',
         'svgmin',
         'htmlmin'

@@ -27,7 +27,8 @@
     "grunt-contrib-sass": "~0.5.0",
     "grunt-connect-proxy": "~0.1.10",
     "connect-modrewrite": "~0.6.4-pre",
-    "grunt-ftp-deploy": "^0.1.2"
+    "grunt-ftp-deploy": "^0.1.2",
+    "grunt-autoprefixer": "~0.7.3"
   },
   "engines": {
     "node": ">=0.8.0"
