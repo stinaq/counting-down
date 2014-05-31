@@ -2,72 +2,42 @@ $standard-margin: 30px;
 
 .top-bar {
   background: #D69C1E;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 400px;
   color: #fff;
 }
 
 .counter-container {
-  display: flex;
 }
 
 .counter-outer-container {
-  display: flex;
-  justify-content: space-between;
 }
 
 .item-container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 $standard-margin;
-  min-width: 110px;
 }
 
 .counter-number {
-  display: flex;
-  justify-content: center;
-  font-size: 7em;
 }
 
 .counter-description {
-  display: flex;
-  justify-content: center;
 }
 
 .counter-title-container {
-  display: flex;
-  justify-content: flex-end;
 }
 
 .counter-title-paragraph {
-  margin: $standard-margin - 20px $standard-margin 0 0;
-  text-align: right;
 }
 
 .counter-title {
-  font-size: 4em;
-  margin-left: 10px;
 }
 
 .show-zeros-container {
-  position: absolute;
-  top: 20px;
-  right: 50px;
 
   .info-text {
-    color: #fff;
-    font-size: 0.9em;
-    margin-top: -6PX;
   }
 
   input[type=checkbox] {
     visibility: hidden;
   }
 }
-
-
 
 /* SQUARED THREE */
 .squaredThree {
