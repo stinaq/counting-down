@@ -38,30 +38,26 @@
                   <div class="col-md-12">
                     <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 col-sm-6">
                     <div class="form-group">
                       <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today">
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 col-sm-6">
                     <div class="form-group">
                       <input type="text" size="8" class="form-control" ng-model="timeDateInput" data-time-format="HH:mm" data-autoclose="1" placeholder="Time" bs-timepicker>
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 col-sm-6">
                     <div class="form-group">
                       <input type="text" size="8" class="form-control" ng-model="title" placeholder="To what?">
                     </div>
                   </div>
+                  <div class="col-md-2 col-md-offset-10 col-sm-6">
+                    <button type="button" class="btn btn-default start-button" ng-click="handleStart()">Start</button>
+                  </div>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-2 col-md-offset-10">
-                  <button type="button" class="btn btn-default" ng-click="handleStart()">Start</button>
-                </div>
-              </div>
-
 
             </form>
 
