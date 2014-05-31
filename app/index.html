@@ -17,7 +17,7 @@
   <body ng-app="countingDown">
     <main ng-controller="MainCtrl">
       <div class="top-bar">
-        <div class="counter-container">
+        <div class="container">
 
           <section ng-show="timeHasPassed">
             Aww, that time has passed
@@ -25,30 +25,50 @@
           </section>
 
           <section ng-hide="hasValidDate">
-            <input ng-model="title" placeholder="To what?">
-            <form name="timepickerForm" class="form-inline" role="form">
+            <div class="row">
+              <div class="col-md-12">
+                <h1>Start a count down</h1>
+              </div>
+            </div>
+            <form name="timepickerForm" role="form">
 
-              <!-- Datetime example -->
-              <div class="form-group">
-                <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
+              <div class="row">
+                <!-- Datetime example -->
                 <div class="form-group">
-                  <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today">
-                </div>
-                <div class="form-group">
-                  <input type="text" size="8" class="form-control" ng-model="timeDateInput" data-time-format="HH:mm" data-autoclose="1" placeholder="Time" bs-timepicker>
+                  <div class="col-md-12">
+                    <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="text" size="8" class="form-control" ng-model="timeDateInput" data-time-format="HH:mm" data-autoclose="1" placeholder="Time" bs-timepicker>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="text" size="8" class="form-control" ng-model="title" placeholder="To what?">
+                    </div>
+                  </div>
                 </div>
               </div>
 
+              <div class="row">
+                <div class="col-md-2 col-md-offset-10">
+                  <button type="button" class="btn btn-default" ng-click="handleStart()">Start</button>
+                </div>
+              </div>
+
+
             </form>
 
-            Date: {{ timeDateInput }}
-
-            <button ng-click="handleStart()">Start counting down</button>
           </section>
 
           <section ng-show="hasValidDate">
 
-            <div class="counter-outer-container">
               <div class="item-container" ng-show="shouldBeDisplayed(secondsPerYear)">
                 <div class="counter-number">
                   {{ years }}
@@ -89,7 +109,6 @@
                   seconds
                 </div>
               </div>
-            </div>
 
             <div class="counter-title-container">
               <p class="counter-title-paragraph">Counting down to

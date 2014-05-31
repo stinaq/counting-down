@@ -3,6 +3,12 @@ $standard-margin: 30px;
 .top-bar {
   background: #D69C1E;
   color: #fff;
+  padding: 120px 0;
+
+
+  @media screen and (max-width: 768px) {
+    padding: 30px 0;
+  }
 }
 
 .counter-container {
