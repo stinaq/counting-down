@@ -55,6 +55,34 @@ body.three {
   @include colorize(#41BF69);
 }
 
+body.four {
+  @include colorize(#D35400);
+}
+
+body.five {
+  @include colorize(#913D88);
+}
+
+body.six {
+  @include colorize(#1BA39C);
+}
+
+body.seven {
+  @include colorize(#336E7B);
+}
+
+body.eight {
+  @include colorize(#545454);
+}
+
+body.nine {
+  @include colorize(#28324e);
+}
+
+body.ten {
+  @include colorize(#EB6B56);
+}
+
 /* SQUARED THREE */
 .squaredThree {
   width: 20px;
