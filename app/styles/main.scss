@@ -1,10 +1,8 @@
 $standard-margin: 30px;
 
 .top-bar {
-  background: #D69C1E;
   color: #fff;
-  padding: 120px 0;
-
+  padding: 120px 0 150px 0;
 
   @media screen and (max-width: 768px) {
     padding: 30px 0;
@@ -15,28 +13,11 @@ $standard-margin: 30px;
   width: 100%;
 }
 
-.counter-container {
-}
-
-.counter-outer-container {
-}
-
-.item-container {
-}
-
-.counter-number {
-}
-
-.counter-description {
-}
-
-.counter-title-container {
-}
-
-.counter-title-paragraph {
-}
-
-.counter-title {
+.datepicker,
+.timepicker {
+  .btn-default {
+    border: none;
+  }
 }
 
 .show-zeros-container {
@@ -47,6 +28,31 @@ $standard-margin: 30px;
   input[type=checkbox] {
     visibility: hidden;
   }
+}
+
+/* Colorizing =) */
+
+@mixin colorize($color) {
+  .top-bar {
+    background: $color;
+
+  }
+
+  .start-button {
+    color: $color;
+  }
+}
+
+body.one {
+  @include colorize(#564687);
+}
+
+body.two {
+  @include colorize(#D19121);
+}
+
+body.three {
+  @include colorize(#41BF69);
 }
 
 /* SQUARED THREE */

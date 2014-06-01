@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
   </head>
-  <body ng-app="countingDown">
+  <body ng-app="countingDown" class="three">
     <main ng-controller="MainCtrl">
       <div class="top-bar">
         <div class="container">
@@ -35,9 +35,6 @@
               <div class="row">
                 <!-- Datetime example -->
                 <div class="form-group">
-                  <div class="col-md-12">
-                    <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
-                  </div>
                   <div class="col-md-4 col-sm-6">
                     <div class="form-group">
                       <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today">
