@@ -25,6 +25,30 @@ $standard-margin: 30px;
   }
 }
 
+.counter-table {
+  margin: 0 auto;
+
+  td {
+  }
+
+  .numbers-row {
+    font-size: 5em;
+
+    td {
+      padding: 5px 30px;
+      text-align: center;
+      min-width: 145px;
+    }
+  }
+
+  .description-row {
+
+    td {
+      text-align: center;
+    }
+  }
+}
+
 .show-zeros-container {
 
   .info-text {
@@ -45,6 +69,12 @@ $standard-margin: 30px;
 
   .start-button {
     color: $color;
+    border-color: darken($color, 5);
+    &:hover {
+      background: $color;
+      color: #fff;
+      border-color: #fff;
+    }
   }
 }
 
