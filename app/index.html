@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
   </head>
-  <body ng-app="countingDown" class="three">
+  <body ng-app="countingDown">
     <main ng-controller="MainCtrl">
       <div class="top-bar">
         <div class="container">
@@ -62,46 +62,26 @@
 
           <section ng-show="hasValidDate">
 
-              <div class="item-container" ng-show="shouldBeDisplayed(secondsPerYear)">
-                <div class="counter-number">
-                  {{ years }}
-                </div>
-                <div class="counter-description">
-                  years
-                </div>
-              </div>
-              <div class="item-container" ng-show="shouldBeDisplayed(secondsPerDay)">
-                <div class="counter-number">
-                  {{ days }}
-                </div>
-                <div class="counter-description">
-                  days
-                </div>
-              </div>
-              <div class="item-container" ng-show="shouldBeDisplayed(secondsPerHour)">
-                <div class="counter-number">
-                  {{ hours }}
-                </div>
-                <div class="counter-description">
-                  hours
-                </div>
-              </div>
-              <div class="item-container" ng-show="shouldBeDisplayed(secondsPerMinute)">
-                <div class="counter-number">
-                  {{ minutes }}
-                </div>
-                <div class="counter-description">
-                  minutes
-                </div>
-              </div>
-              <div class="item-container">
-                <div class="counter-number">
-                  {{ seconds }}
-                </div>
-                <div class="counter-description">
-                  seconds
-                </div>
-              </div>
+            <table class="counter-table">
+              <tr class="numbers-row">
+                <td ng-show="shouldBeDisplayed(secondsPerYear)">{{ years }}</td>
+                <td ng-show="shouldBeDisplayed(secondsPerDay)">{{ days }}</td>
+                <td ng-show="shouldBeDisplayed(secondsPerHour)">{{ hours }}</td>
+                <td ng-show="shouldBeDisplayed(secondsPerMinute)">{{ minutes }}</td>
+                <td>{{ seconds }}</td>
+              </tr>
+
+              <tr class="description-row">
+                <td ng-show="shouldBeDisplayed(secondsPerYear)">years</td>
+                <td ng-show="shouldBeDisplayed(secondsPerDay)">days</td>
+                <td ng-show="shouldBeDisplayed(secondsPerHour)">hours</td>
+                <td ng-show="shouldBeDisplayed(secondsPerMinute)">minutes</td>
+                <td>seconds</td>
+              </tr>
+              <tr>
+
+              </tr>
+            </table>
 
             <div class="counter-title-container">
               <p class="counter-title-paragraph">Counting down to
@@ -131,6 +111,8 @@
     </main>
 
     <script src="bower_components/jquery/jquery.js"></script>
+    <script src="scripts/extras/colorize.js"></script>
+
     <!-- build:js scripts/plugins.js -->
 
     <!-- endbuild -->
