@@ -3,25 +3,20 @@
 angular.module('countingDown.controllers')
 .controller('MainCtrl', function ($scope, $timeout, $moment, $location) {
 
-  $scope.timeDateInput = '';
-  $scope.title = '';
-  $scope.years = 0;
-  $scope.days = 0;
-  $scope.hours = 0;
-  $scope.minutes = 0;
-  $scope.seconds = 0;
-  $scope.secondsLeft = 0;
-
-  $scope.showZeros = false;
-  $scope.hasValidDate = false;
-  $scope.hasValidTitle = false;
-  $scope.timeHasPassed = false;
-
   $scope.secondsPerYear = 31557600;
   $scope.secondsPerDay = 86400;
   $scope.secondsPerHour = 3600;
   $scope.secondsPerMinute = 60;
   var unixTime = 0;
+  var counterTimeout;
+
+  $scope.$on('$locationChangeStart', function() {
+    if (counterTimeout) {
+      $timeout.cancel(counterTimeout);
+    }
+
+    init();
+  });
 
   var setQueryStringParams = function (title, unixTime) {
     var encodedTitle = encodeURIComponent(title);
@@ -109,7 +104,7 @@ angular.module('countingDown.controllers')
     $scope.minutes = parsedTime.minutes;
     $scope.seconds = parsedTime.seconds;
 
-    $timeout(countDown, 1000);
+    counterTimeout = $timeout(countDown, 1000);
   };
 
   var validateTitle = function (title) {
@@ -117,7 +112,6 @@ angular.module('countingDown.controllers')
       $scope.hasValidTitle = false;
       $scope.title = '';
     } else {
-
       $scope.title = decodeURIComponent(title);
     }
   };
@@ -134,18 +128,37 @@ angular.module('countingDown.controllers')
     return false;
   };
 
+  var resetApp = function () {
+    $scope.timeDateInput = '';
+    $scope.title = '';
+    $scope.years = 0;
+    $scope.days = 0;
+    $scope.hours = 0;
+    $scope.minutes = 0;
+    $scope.seconds = 0;
+    $scope.secondsLeft = 0;
+
+    $scope.showZeros = false;
+    $scope.hasValidDate = false;
+    $scope.hasValidTitle = false;
+    $scope.timeHasPassed = false;
+  };
+
   var startCountDown = function () {
-    $scope.endTime = $moment.unix(unixTime).format("dddd, MMMM Do YYYY, h:mm:ss");
-    $timeout(countDown, 1000);
+    $scope.endTime = $moment.unix(unixTime).format('dddd, MMMM Do YYYY, h:mm:ss');
+    counterTimeout = $timeout(countDown, 1000);
   };
 
   var init = function () {
     var queryStrings = $location.search();
     if (validateQueryStringParams(queryStrings.t, queryStrings.title)) {
       startCountDown();
+    } else {
+      resetApp();
     }
   };
 
+  resetApp();
   init();
 
 });
