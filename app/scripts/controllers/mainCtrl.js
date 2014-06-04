@@ -48,6 +48,11 @@ angular.module('countingDown.controllers')
     return false;
   };
 
+  $scope.goToRoot = function () {
+    console.log($location);
+    $location.search('');
+  };
+
   var quotientWithRemainder = function (numerator, denominator) {
 
     var remainder = numerator % denominator;
@@ -89,10 +94,12 @@ angular.module('countingDown.controllers')
     if (sumSeconds < 0) {
       $scope.timeHasPassed = true;
       $scope.hasValidDate = false;
+      $scope.pickNewTime = false;
       return;
     } else {
       $scope.timeHasPassed = false;
       $scope.hasValidDate = true;
+      $scope.pickNewTime = false;
       $scope.secondsLeft = sumSeconds;
     }
 
@@ -121,6 +128,7 @@ angular.module('countingDown.controllers')
     if (!isNaN(parsedString) && parsedString > 0) {
       validateTitle(queryStringTitle);
       $scope.hasValidDate = true;
+      $scope.pickNewTime = false;
       unixTime = parsedString;
       return true;
     }
@@ -142,6 +150,7 @@ angular.module('countingDown.controllers')
     $scope.hasValidDate = false;
     $scope.hasValidTitle = false;
     $scope.timeHasPassed = false;
+    $scope.pickNewTime = true;
   };
 
   var startCountDown = function () {

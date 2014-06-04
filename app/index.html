@@ -20,11 +20,25 @@
         <div class="container" ng-cloak>
 
           <section ng-show="timeHasPassed">
-            Aww, that time has passed
-            Enter a new one?
+            <table class="counter-table">
+              <tr class="numbers-row">
+                <td>0</td>
+              </tr>
+
+              <tr class="description-row">
+                <td>seconds left</td>
+              </tr>
+            </table>
+
+            <div class="row">
+              <div class="col-md-2 col-md-offset-10 col-sm-6">
+                <button type="button" class="btn btn-default start-button" ng-click="goToRoot()">Start new counter</button>
+              </div>
+            </div>
+
           </section>
 
-          <section ng-hide="hasValidDate">
+          <section ng-show="pickNewTime">
             <div class="row">
               <div class="col-md-12">
                 <h1>Start a count down</h1>
@@ -78,9 +92,6 @@
                 <td ng-show="shouldBeDisplayed(secondsPerMinute)">minutes</td>
                 <td>seconds</td>
               </tr>
-              <tr>
-
-              </tr>
             </table>
             <div class="counter-title-container">
               <p class="counter-title-paragraph">to
@@ -94,7 +105,7 @@
         </div>
       </div>
 
-      <!-- Squared THREE checkbox, borrowed from cssdeck http://cssdeck.com/labs/css-checkbox-styles -->
+      <!-- checkbox borrowed from cssdeck http://cssdeck.com/labs/css-checkbox-styles -->
       <div class="show-zeros-container" ng-show="hasValidDate">
 
         <div class="squaredThree">
