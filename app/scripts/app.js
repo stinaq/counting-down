@@ -5,6 +5,6 @@ angular.module('countingDown', [
   'ngRoute',
   'angular-momentjs',
   'mgcrea.ngStrap'
-  ]);
+]);
 
 angular.module('countingDown.controllers', []);

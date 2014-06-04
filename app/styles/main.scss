@@ -7,10 +7,10 @@ $standard-margin: 30px;
 
 .top-bar {
   color: #fff;
-  padding: 120px 0 150px 0;
+  padding: 120px 0 110px 0;
 
   @media screen and (max-width: 768px) {
-    padding: 30px 0;
+    padding: 80px 0;
   }
 }
 
@@ -28,20 +28,52 @@ $standard-margin: 30px;
 .counter-table {
   margin: 0 auto;
 
-  td {
-  }
-
   .numbers-row {
     font-size: 5em;
 
+    @media screen and (max-width: 1536px) {
+      font-size: 5.5em;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 4.7em;
+    }
+    @media screen and (max-width: 640px) {
+      font-size: 4em;
+    }
+    @media screen and (max-width: 500px) {
+      font-size: 3.3em;
+    }
+    @media screen and (max-width: 320px) {
+      font-size: 2.3em;
+    }
+
     td {
-      padding: 5px 30px;
+      padding: 5px 10%px;
       text-align: center;
-      min-width: 145px;
+
+      @media screen and (max-width: 1536px) {
+        min-width: 145px;
+      }
+      @media screen and (max-width: 768px) {
+        min-width: 115px;
+      }
+      @media screen and (max-width: 640px) {
+        min-width: 100px;
+      }
+      @media screen and (max-width: 500px) {
+        min-width: 3%;
+      }
     }
   }
 
   .description-row {
+
+    @media screen and (max-width: 1536px) {
+      font-size: 1em;
+    }
+    @media screen and (max-width: 640px) {
+      font-size: 0.9em;
+    }
 
     td {
       text-align: center;
@@ -49,10 +81,20 @@ $standard-margin: 30px;
   }
 }
 
-.show-zeros-container {
+.counter-title-container {
+  margin-top: 50px;
+}
 
-  .info-text {
+.counter-title-paragraph {
+  text-align: center;
+  font-size: 1.5em;
+
+  @media screen and (max-width: 1536px) {
+    font-size: 1.2em;
   }
+}
+
+.show-zeros-container {
 
   input[type=checkbox] {
     visibility: hidden;
