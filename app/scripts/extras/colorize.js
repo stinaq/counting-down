@@ -27,6 +27,4 @@
   }
 
   $('body').addClass(classToAdd);
-
-  console.log(classToAdd);
 }());

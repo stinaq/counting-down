@@ -44,14 +44,14 @@
                 <h1>Start a count down</h1>
               </div>
             </div>
-            <form name="timepickerForm" role="form">
+            <form name="timepickerForm" role="form" novalidate>
 
               <div class="row">
                 <!-- Datetime example -->
                 <div class="form-group">
                   <div class="col-md-4 col-sm-6">
                     <div class="form-group">
-                      <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today">
+                      <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today" data-date-format="fullDate" required>
                     </div>
                   </div>
                   <div class="col-md-4 col-sm-6">
@@ -65,7 +65,7 @@
                     </div>
                   </div>
                   <div class="col-md-2 col-md-offset-10 col-sm-6">
-                    <button type="button" class="btn btn-default start-button" ng-click="handleStart()">Start</button>
+                    <button type="button" class="btn btn-default start-button" ng-click="handleStart()" ng-disabled="timepickerForm.$invalid">Start</button>
                   </div>
                 </div>
               </div>

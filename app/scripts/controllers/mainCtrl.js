@@ -33,6 +33,7 @@ angular.module('countingDown.controllers')
   };
 
   $scope.handleStart = function () {
+    console.log($scope.timeDateInput);
     unixTime = convertTimeToUnix($scope.timeDateInput);
     setQueryStringParams($scope.title, unixTime);
     startCountDown();
@@ -137,7 +138,7 @@ angular.module('countingDown.controllers')
   };
 
   var resetApp = function () {
-    $scope.timeDateInput = '';
+    $scope.timeDateInput = undefined;
     $scope.title = '';
     $scope.years = 0;
     $scope.days = 0;
