@@ -8,6 +8,8 @@ Built with AngularJS and MomentJS.
 Build steps:  
 -----------
 
+Npm and Sass required
+
 ```npm install -g grunt-cli bower```
 
     npm install
