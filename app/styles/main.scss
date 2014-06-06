@@ -30,6 +30,18 @@ body {
   }
 }
 
+@mixin retinaspecific($maxwidth, $attribute, $value) {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: $maxwidth),
+  only screen and ( min--moz-device-pixel-ratio: 2) and (max-width: $maxwidth),
+  only screen and ( -o-min-device-pixel-ratio: 2/1) and (max-width: $maxwidth),
+  only screen and ( min-device-pixel-ratio: 2) and (max-width: $maxwidth),
+  only screen and ( min-resolution: 192dpi) and (max-width: $maxwidth),
+  only screen and ( min-resolution: 2dppx) and (max-width: $maxwidth) {
+    #{$attribute}: $value;
+  }
+}
+
 .counter-table {
   margin: 0 auto;
 
@@ -74,6 +86,7 @@ body {
       @media screen and (max-width: 500px) {
         min-width: 3%;
       }
+      @include retinaspecific(500px, min-width, 55px);
     }
   }
 
@@ -103,6 +116,10 @@ body {
   @media screen and (max-width: 1536px) {
     font-size: 1.2em;
   }
+}
+
+.end-date {
+  @include retinaspecific(500px, font-size, 0.9em);
 }
 
 .show-zeros-container {
