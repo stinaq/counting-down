@@ -171,6 +171,17 @@ body {
       border-color: #fff;
     }
   }
+
+  .counter-button {
+    color: #fff;
+    border-color: #fff;
+    background: $color;
+    &:hover {
+      background: #fff;
+      color: $color;
+      border-color: #fff;
+    }
+  }
 }
 
 body.one {
