@@ -32,6 +32,13 @@
               </tr>
             </table>
 
+            <div class="counter-title-container">
+              <p class="counter-title-paragraph">
+                <span ng-show="hasValidTitle" class="counter-title">to {{ title }}</span><br>
+                <span class="end-date">{{ endTime }}</span>
+              </p>
+            </div>
+
             <div class="row">
               <div class="col-md-2 col-md-offset-10 col-sm-6">
                 <button type="button" class="btn btn-default start-button" ng-click="goToRoot()">Start new counter</button>
