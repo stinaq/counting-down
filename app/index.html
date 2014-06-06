@@ -98,7 +98,7 @@
             <div class="counter-title-container">
               <p class="counter-title-paragraph">
                 <span ng-show="hasValidTitle" class="counter-title">to {{ title }}</span><br>
-                <span ng-show="showZeros">{{ endTime }}</span>
+                <span ng-show="showZeros" class="end-date">{{ endTime }}</span>
               </p>
             </div>
 
@@ -123,12 +123,35 @@
 
       <div class="container">
         <div class="row">
-          <div class="col-md-3">
-            Hi and welcome
+          <div class="col-md-3 col-md-offset-1 textbox-padding">
+            <h3>Counting Down</h3>
+            <p>
+              This is a web app that can help you count down to different events in your life. When the pizza should arrive, how long it is until your birthday or when your child is due.
+              <br><br>
+              Input a date and time and start a count down. Share the link with friends or foes.
+            </p>
           </div>
+
+          <div class="col-md-3 col-md-offset-1 textbox-padding">
+            <h3>Development</h3>
+            <p>
+              Counting Down is built with <a href="https://angularjs.org/">AngularJS</a> and <a href="http://momentjs.com/">MomentJS</a>, with help of <a href="http://mgcrea.github.io/angular-strap/">AngularStrap</a> and <a href="https://www.npmjs.org/package/angular-momentjs">AngularMomentJS</a>
+              <br><br>
+
+              <a href="https://github.com/stinaq/counting-down">Fork me on GitHub</a>
+            </p>
+          </div>
+
+          <div class="col-md-3 col-md-offset-1 textbox-padding">
+            <h3>About me</h3>
+            <p>
+              Find me on <a href="https://twitter.com/stinaq">Twitter</a>, <a href="https://github.com/stinaq">GitHub</a> and <a href="http://stinaq.me/">stinaq.me</a>
+            </p>
+          </div>
+
+          <div class="hidden-md hidden-lg separator"></div>
         </div>
       </div>
-
 
     </main>
 
