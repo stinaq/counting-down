@@ -156,7 +156,7 @@ angular.module('countingDown.controllers')
   };
 
   var startCountDown = function () {
-    $scope.endTime = $moment.unix(unixTime).format('dddd, MMMM Do YYYY, h:mm:ss');
+    $scope.endTime = $moment.unix(unixTime).format('dddd, MMMM Do YYYY, HH:mm');
     counterTimeout = $timeout(countDown, 1000);
   };
 
