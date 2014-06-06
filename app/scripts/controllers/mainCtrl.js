@@ -120,6 +120,7 @@ angular.module('countingDown.controllers')
       $scope.hasValidTitle = false;
       $scope.title = '';
     } else {
+      $scope.hasValidTitle = true;
       $scope.title = decodeURIComponent(title);
     }
   };
