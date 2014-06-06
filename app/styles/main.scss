@@ -30,6 +30,14 @@ body {
   }
 }
 
+.textbox-padding {
+  padding: 20px 20px 0 20px;
+}
+
+.separator {
+  height: 40px;
+}
+
 @mixin retinaspecific($maxwidth, $attribute, $value) {
   @media
   only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: $maxwidth),
@@ -68,7 +76,7 @@ body {
     }
 
     td {
-      padding: 5px 10%px;
+      padding: 5px 10px;
       text-align: center;
 
       @media screen and (min-width: 1001px) {
@@ -84,8 +92,9 @@ body {
         min-width: 100px;
       }
       @media screen and (max-width: 500px) {
-        min-width: 3%;
+        min-width: 90px;
       }
+
       @include retinaspecific(500px, min-width, 55px);
     }
   }
@@ -139,6 +148,15 @@ body {
 /* Colorizing =) */
 
 @mixin colorize($color) {
+  a {
+    color: $color;
+    text-decoration: underline;
+
+    &:hover {
+      color: lighten($color,30);
+    }
+  }
+
   .top-bar {
     background: $color;
 
