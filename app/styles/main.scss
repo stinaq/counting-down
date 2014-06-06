@@ -36,7 +36,10 @@ body {
   .numbers-row {
     font-size: 5em;
 
-    @media screen and (max-width: 1536px) {
+    @media screen and (min-width: 1001px) {
+      font-size: 8em;
+    }
+    @media screen and (max-width: 1000px) {
       font-size: 5.5em;
     }
     @media screen and (max-width: 768px) {
@@ -56,7 +59,10 @@ body {
       padding: 5px 10%px;
       text-align: center;
 
-      @media screen and (max-width: 1536px) {
+      @media screen and (min-width: 1001px) {
+        min-width: 185px;
+      }
+      @media screen and (max-width: 1000px) {
         min-width: 145px;
       }
       @media screen and (max-width: 768px) {
