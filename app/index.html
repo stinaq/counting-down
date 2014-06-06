@@ -96,8 +96,8 @@
               </tr>
             </table>
             <div class="counter-title-container">
-              <p class="counter-title-paragraph">to
-                <span class="counter-title">{{ title }}</span><br>
+              <p class="counter-title-paragraph">
+                <span ng-show="hasValidTitle" class="counter-title">to {{ title }}</span><br>
                 <span ng-show="showZeros">{{ endTime }}</span>
               </p>
             </div>
@@ -105,20 +105,30 @@
           </section>
 
         </div>
-      </div>
 
-      <!-- checkbox borrowed from cssdeck http://cssdeck.com/labs/css-checkbox-styles -->
-      <div class="show-zeros-container" ng-show="hasValidDate">
+        <!-- checkbox borrowed from cssdeck http://cssdeck.com/labs/css-checkbox-styles -->
+        <div class="show-zeros-container" ng-show="hasValidDate">
 
-        <div class="squaredThree">
-          <input type="checkbox" value="None" id="squaredThree" name="check" ng-model="showZeros" />
-          <label for="squaredThree"></label>
+          <div class="squaredThree">
+            <input type="checkbox" value="None" id="squaredThree" name="check" ng-model="showZeros" />
+            <label for="squaredThree"></label>
 
+          </div>
+          <span class="show-zeros-text">
+            Show details
+          </span>
         </div>
-        <span class="info-text">
-          Show more
-        </span>
+
       </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            Hi and welcome
+          </div>
+        </div>
+      </div>
+
 
     </main>
 

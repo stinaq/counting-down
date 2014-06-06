@@ -12,6 +12,7 @@ body {
 .top-bar {
   color: #fff;
   padding: 120px 0 110px 0;
+  position: relative;
 
   @media screen and (max-width: 768px) {
     padding: 80px 0;
@@ -99,10 +100,17 @@ body {
 }
 
 .show-zeros-container {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 
   input[type=checkbox] {
     visibility: hidden;
   }
+}
+
+.show-zeros-text {
+  font-size: 0.8em;
 }
 
 /* Colorizing =) */
@@ -167,7 +175,8 @@ body.ten {
 /* SQUARED THREE */
 .squaredThree {
   width: 20px;
-  margin: 20px auto;
+  margin-top: 0;
+  margin-bottom: 5px;
   position: relative;
 }
 
@@ -177,6 +186,7 @@ body.ten {
   width: 20px;
   height: 20px;
   top: 0;
+  left: 42px;
   border-radius: 4px;
 
   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
