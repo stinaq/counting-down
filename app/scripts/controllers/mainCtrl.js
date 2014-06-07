@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('countingDown.controllers')
-.controller('MainCtrl', function ($scope, $timeout, $moment, $location) {
+.controller('MainCtrl', function ($scope, $timeout, $moment, $location, $modal) {
 
   $scope.secondsPerYear = 31557600;
   $scope.secondsPerDay = 86400;
@@ -18,6 +18,10 @@ angular.module('countingDown.controllers')
     init();
   });
 
+  $scope.setUpUrl = function () {
+    $scope.fullUrl = $location.absUrl();
+  };
+
   var setQueryStringParams = function (title, unixTime) {
     var encodedTitle = encodeURIComponent(title);
 
@@ -33,7 +37,6 @@ angular.module('countingDown.controllers')
   };
 
   $scope.handleStart = function () {
-    console.log($scope.timeDateInput);
     unixTime = convertTimeToUnix($scope.timeDateInput);
     setQueryStringParams($scope.title, unixTime);
     startCountDown();
@@ -53,6 +56,8 @@ angular.module('countingDown.controllers')
     console.log($location);
     $location.search('');
   };
+
+  $scope.copyLinkModal = {};
 
   var quotientWithRemainder = function (numerator, denominator) {
 
