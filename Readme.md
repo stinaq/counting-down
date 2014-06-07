@@ -5,6 +5,8 @@ JavaScript app where a user can start a counter by picking a date and time to co
 
 Built with AngularJS and MomentJS.
 
+Licensed under MIT License
+
 Build steps:  
 -----------
 
