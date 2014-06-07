@@ -19,7 +19,7 @@ body {
   }
 }
 
-.start-button {
+.start-button, .standard-margin, .counter-button {
   width: 100%;
 }
 
@@ -181,7 +181,19 @@ body {
       color: $color;
       border-color: #fff;
     }
+
+    &.standard-button {
+      &:hover {
+        border-color: $color;
+      }
+    }
   }
+
+
+}
+
+.bottom-bar {
+  padding-bottom: 20px;
 }
 
 body.one {
@@ -222,6 +234,23 @@ body.nine {
 
 body.ten {
   @include colorize(#EB6B56);
+}
+
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
 }
 
 /* SQUARED THREE */
