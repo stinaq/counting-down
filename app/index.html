@@ -128,15 +128,19 @@
 
       </div>
 
-      <div class="container">
+      <div class="container bottom-bar">
         <div class="row">
           <div class="col-md-3 col-md-offset-1 textbox-padding">
             <h3>Counting Down</h3>
             <p>
-              This is a web app that can help you count down to different events in your life. When the pizza should arrive, how long it is until your birthday or when your child is due.
+              Countingdown helps you count down to important or unimportant events in your life. When the pizza should arrive, how long it is until your birthday or when your child is due.
               <br><br>
-              Input a date and time and start a count down. Share the link with friends or foes.
+              Input a date and time and start a count down.
             </p>
+
+            Easily start a new counter:
+            <br><br>
+            <button type="button" class="btn btn-default counter-button standard-button" ng-click="goToRoot()">Create a countdown</button>
           </div>
 
           <div class="col-md-3 col-md-offset-1 textbox-padding">
@@ -145,14 +149,23 @@
               Counting Down is built with <a href="https://angularjs.org/">AngularJS</a> and <a href="http://momentjs.com/">MomentJS</a>, with help of <a href="http://mgcrea.github.io/angular-strap/">AngularStrap</a> and <a href="https://www.npmjs.org/package/angular-momentjs">AngularMomentJS</a>
               <br><br>
 
-              <a href="https://github.com/stinaq/counting-down">Fork me on GitHub</a>
+              Find me on <a href="https://twitter.com/stinaq">Twitter</a>, <a href="https://github.com/stinaq">GitHub</a> and <a href="http://stinaq.me/">stinaq.me</a>, or fork <a href="https://github.com/stinaq/counting-down">countingdown on GitHub</a>
             </p>
           </div>
 
           <div class="col-md-3 col-md-offset-1 textbox-padding">
-            <h3>About me</h3>
+            <h3>Save and share easily</h3>
             <p>
-              Find me on <a href="https://twitter.com/stinaq">Twitter</a>, <a href="https://github.com/stinaq">GitHub</a> and <a href="http://stinaq.me/">stinaq.me</a>
+              It's easy to share or save a countdown you've created by just copying the link of the countdown <span ng-show="hasValidDate">
+                , or clicking the handy button below,
+
+              </span>and then giving the link to friends or foes.
+
+              <span ng-show="hasValidDate">
+                <br><br>
+                <button type="button" class="btn btn-default counter-button standard-button" data-animation="am-fade-and-scale" data-template="/templates/copyLinkModalTmpl.html" data-placement="center" bs-modal="copyLinkModal" ng-click="setUpUrl()">Copy link to share or save</button>
+              </span>
+
             </p>
           </div>
 
