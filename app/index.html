@@ -2,201 +2,28 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Counting Down</title>
     <meta name="description" content="Countingdown helps you count down to important or unimportant events in your life. When the pizza should arrive, how long it is until your birthday or when your child is due.">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
-
-    <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
   </head>
-  <body ng-app="countingDown">
-    <main ng-controller="MainCtrl">
-      <div class="top-bar">
-        <div class="container" ng-cloak>
 
-          <section ng-show="timeHasPassed">
-            <table class="counter-table">
-              <tr class="numbers-row">
-                <td>0</td>
-              </tr>
+  <body>
 
-              <tr class="description-row">
-                <td>seconds left</td>
-              </tr>
-            </table>
+    <h1>Counting Down</h1>
 
-            <div class="counter-title-container">
-              <p class="counter-title-paragraph">
-                <span ng-show="hasValidTitle" class="counter-title">to {{ title }}</span><br>
-                <span class="end-date">{{ endTime }}</span>
-              </p>
-            </div>
+    <script type="text/javascript" src="scripts/Clock.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
 
-            <div class="row">
-              <div class="col-md-2 col-md-offset-10 col-sm-6">
-                <button type="button" class="btn btn-default counter-button" ng-click="goToRoot()">Start new counter</button>
-              </div>
-            </div>
+    <div id="TICKING_CLOCK">
+      <h1>Klockan</h1>
+    </div>
 
-          </section>
+    <script type="text/javascript">
+      const clockView = document.getElementById("TICKING_CLOCK");
+      AppState.RegisterThing("TICKING_CLOCK", clockView, Clock.condition);
+    </script>
 
-          <section ng-show="pickNewTime">
-            <div class="row">
-              <div class="col-md-12">
-                <h1>Start a count down</h1>
-              </div>
-            </div>
-            <form name="timepickerForm" role="form" novalidate>
-
-              <div class="row">
-                <!-- Datetime example -->
-                <div class="form-group">
-                  <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                      <input type="text" size="10" class="form-control" ng-model="timeDateInput" data-autoclose="1" placeholder="Date" bs-datepicker data-min-date="today" data-date-format="fullDate" required>
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                      <input type="text" size="8" class="form-control" ng-model="timeDateInput" data-time-format="HH:mm" data-autoclose="1" placeholder="Time" bs-timepicker>
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-sm-6">
-                    <div class="form-group">
-                      <input type="text" size="8" class="form-control" ng-model="title" placeholder="To what?">
-                    </div>
-                  </div>
-                  <div class="col-md-2 col-md-offset-10 col-sm-6">
-                    <button type="button" class="btn btn-default start-button" ng-click="handleStart()" ng-disabled="timepickerForm.$invalid">Start</button>
-                  </div>
-                </div>
-              </div>
-
-            </form>
-
-          </section>
-
-          <section ng-show="hasValidDate">
-
-            <table class="counter-table">
-              <tr class="numbers-row">
-                <td ng-show="shouldBeDisplayed(secondsPerYear)">{{ years }}</td>
-                <td ng-show="shouldBeDisplayed(secondsPerDay)">{{ days }}</td>
-                <td ng-show="shouldBeDisplayed(secondsPerHour)">{{ hours }}</td>
-                <td ng-show="shouldBeDisplayed(secondsPerMinute)">{{ minutes }}</td>
-                <td>{{ seconds }}</td>
-              </tr>
-
-              <tr class="description-row">
-                <td ng-show="shouldBeDisplayed(secondsPerYear)">years</td>
-                <td ng-show="shouldBeDisplayed(secondsPerDay)">days</td>
-                <td ng-show="shouldBeDisplayed(secondsPerHour)">hours</td>
-                <td ng-show="shouldBeDisplayed(secondsPerMinute)">minutes</td>
-                <td>seconds</td>
-              </tr>
-            </table>
-            <div class="counter-title-container">
-              <p class="counter-title-paragraph">
-                <span ng-show="hasValidTitle" class="counter-title">to {{ title }}</span><br>
-                <span ng-show="showZeros" class="end-date">{{ endTime }}</span>
-              </p>
-            </div>
-
-          </section>
-
-        </div>
-
-        <!-- checkbox borrowed from cssdeck http://cssdeck.com/labs/css-checkbox-styles -->
-        <div class="show-zeros-container" ng-show="hasValidDate">
-
-          <div class="squaredThree">
-            <input type="checkbox" value="None" id="squaredThree" name="check" ng-model="showZeros" />
-            <label for="squaredThree"></label>
-
-          </div>
-          <span class="show-zeros-text">
-            Show details
-          </span>
-        </div>
-
-      </div>
-
-      <div class="container bottom-bar">
-        <div class="row">
-          <div class="col-md-3 col-md-offset-1 textbox-padding">
-            <h3>Counting Down</h3>
-            <p>
-              Countingdown helps you count down to important or unimportant events in your life. When the pizza should arrive, how long it is until your birthday or when your child is due.
-              <br><br>
-              Input a date and time and start a count down.
-            </p>
-
-            Easily start a new counter:
-            <br><br>
-            <button type="button" class="btn btn-default counter-button standard-button" ng-click="goToRoot()">Create a countdown</button>
-          </div>
-
-          <div class="col-md-3 col-md-offset-1 textbox-padding">
-            <h3>Development</h3>
-            <p>
-              Counting Down is built with <a href="https://angularjs.org/">AngularJS</a> and <a href="http://momentjs.com/">MomentJS</a>, with help of <a href="http://mgcrea.github.io/angular-strap/">AngularStrap</a> and <a href="https://www.npmjs.org/package/angular-momentjs">AngularMomentJS</a>
-              <br><br>
-
-              Find me on <a href="https://twitter.com/stinaq">Twitter</a>, <a href="https://github.com/stinaq">GitHub</a> and <a href="http://stinaq.me/">stinaq.me</a>, or fork <a href="https://github.com/stinaq/counting-down">countingdown on GitHub</a>
-            </p>
-          </div>
-
-          <div class="col-md-3 col-md-offset-1 textbox-padding">
-            <h3>Save and share easily</h3>
-            <p>
-              It's easy to share or save a countdown you've created by just copying the link of the countdown <span ng-show="hasValidDate">
-                , or clicking the handy button below,
-
-              </span>and then giving the link to friends or foes.
-
-              <span ng-show="hasValidDate">
-                <br><br>
-                <button type="button" class="btn btn-default counter-button standard-button" data-animation="am-fade-and-scale" data-template="/templates/copyLinkModalTmpl.html" data-placement="center" bs-modal="copyLinkModal" ng-click="setUpUrl()">Copy link to share or save</button>
-              </span>
-
-            </p>
-          </div>
-
-          <div class="hidden-md hidden-lg separator"></div>
-        </div>
-      </div>
-
-    </main>
-
-    <script src="bower_components/jquery/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-
-    <!-- build:js scripts/plugins.js -->
-    <script src="scripts/extras/colorize.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js scripts/modules.js -->
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/momentjs/moment.js"></script>
-    <script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/mainCtrl.js"></script>
-    <script src="scripts/directives/selectOnFocus.js"></script>
-    <!-- endbuild -->
-
-    <script>
+<!--     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -205,7 +32,7 @@
       ga('create', 'UA-36459920-3', 'countingdown.nu');
       ga('send', 'pageview');
 
-    </script>
+    </script> -->
 
   </body>
 </html>
