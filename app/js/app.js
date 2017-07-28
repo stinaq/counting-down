@@ -16,6 +16,10 @@
     Vad behöver hända?
     Registrera vyer, sen slå av och på dem vid olika events
 
+    varje gång en vy registreras så ska det bestämmas om den ska visas, det borde vara det första jag gör
+    sen handlar det nog om att gå igenom alla när hashen ändras?
+
+    varje vy har ett condition som säger om det ska visas eller inte, innan det är sant ska de inte visas
   */
 
 
@@ -26,8 +30,6 @@
 let AppState = (() => {
   let allThings = {};
 
-
-  // sätt upp en watcher på locationChange? då måstejag nog använda hash ist, annars laddar sidan om
   window.addEventListener('hashchange', () => {
     console.log('hash changed');
     Object.keys(allThings).forEach((name) => {
@@ -37,14 +39,21 @@ let AppState = (() => {
 
   const ViewDecider = (name) => {
     if (name) {
-      allThings[name].condition();
+      const view = allThings[name];
+      if (view.condition()) {
+        console.log(`${name} shown`);
+        view.show();
+      } else {
+        console.log(`${name} not shown`);
+        view.hide();
+      }
     }
   };
 
   return {
-    RegisterThing: (name, element, condition) => {
+    RegisterThing: (name, element, condition, show, hide) => {
       console.log(`Registering ${name}`);
-      allThings[name] = { element, condition };
+      allThings[name] = { element, condition, show, hide };
       ViewDecider(name);
     }
   };
