@@ -30,6 +30,9 @@ let AppState = (() => {
   // sätt upp en watcher på locationChange? då måstejag nog använda hash ist, annars laddar sidan om
   window.addEventListener('hashchange', () => {
     console.log('hash changed');
+    Object.keys(allThings).forEach((name) => {
+      ViewDecider(name);
+    });
   });
 
   const ViewDecider = (name) => {
