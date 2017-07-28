@@ -12,15 +12,26 @@
     <h1>Counting Down</h1>
 
     <script type="text/javascript" src="js/Clock.js"></script>
+    <script type="text/javascript" src="js/Time-picker.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+
+    <div id="TIME_PICKER">
+      <h2>Time picker</h2>
+    </div>
 
     <div id="TICKING_CLOCK">
       <h1>Klockan</h1>
+      <span id="clock"></span>
     </div>
 
     <script type="text/javascript">
-      const clockView = document.getElementById("TICKING_CLOCK");
-      AppState.RegisterThing("TICKING_CLOCK", clockView, Clock.condition);
+      const timePickerView = document.getElementById(TimePicker.id);
+      AppState.RegisterThing("TIME_PICKER", timePickerView, TimePicker.condition, TimePicker.show, TimePicker.hide);
+    </script>
+
+    <script type="text/javascript">
+      const clockView = document.getElementById(Clock.id);
+      AppState.RegisterThing("TICKING_CLOCK", clockView, Clock.condition, Clock.show, Clock.hide);
     </script>
 
   </body>
