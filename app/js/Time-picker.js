@@ -11,6 +11,13 @@ const TimePicker = (function(argument) {
     show: () => {
       const timePickerView = document.getElementById(id);
       timePickerView.style.display = 'inherit';
+
+      const startButton = document.querySelector('#TIME_PICKER_start-button');
+      startButton.addEventListener('click', () => {
+        const date = document.querySelector('#TIME_PICKER_data-input').value;
+        const timeStamp = Math.floor(new Date(date) / 1000);
+        window.location.hash = timeStamp;
+      });
     },
     hide: () => {
       const timePickerView = document.getElementById(id);
