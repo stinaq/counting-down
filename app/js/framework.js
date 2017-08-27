@@ -37,6 +37,7 @@ let AppState = (() => {
     });
   });
 
+  // should view be renamed to component?
   const ViewDecider = (name) => {
     if (name) {
       const view = allThings[name];
