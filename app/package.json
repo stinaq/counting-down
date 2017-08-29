@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "flatpickr": "^3.0.7"
+    "flatpickr": "^3.0.7",
+    "moment": "^2.18.1"
   }
 }
