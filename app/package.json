@@ -2,5 +2,11 @@
   "dependencies": {
     "flatpickr": "^3.0.7",
     "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "jest": "^20.0.4"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
