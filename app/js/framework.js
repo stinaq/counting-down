@@ -11,15 +11,11 @@
     visa/inte visa på dem?
     Positivt med det är att man inte behöver rendera om markupen, den är där redan
 
-    view.ping
+    - Visa ut tiden med alla tid-delar
+    - Kunna visa starttid = query params ist för hash
+    - Byta timepicker
 
-    Vad behöver hända?
-    Registrera vyer, sen slå av och på dem vid olika events
 
-    varje gång en vy registreras så ska det bestämmas om den ska visas, det borde vara det första jag gör
-    sen handlar det nog om att gå igenom alla när hashen ändras?
-
-    varje vy har ett condition som säger om det ska visas eller inte, innan det är sant ska de inte visas
   */
 
 
