@@ -3,7 +3,7 @@
     "date-fns": "^1.28.5"
   },
   "devDependencies": {
-    "jest": "^20.0.4"
+    "jasmine": "^2.8.0"
   },
   "scripts": {
     "test": "jest"
