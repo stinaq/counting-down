@@ -1,5 +1,7 @@
 const timeLeft = require('./../js/time-left');
-// const dateFns = require('./../node_modules/date-fns/get_seconds')
+var dateFns = require('./../node_modules/date-fns/get_seconds')
+console.log(global.dateFns);
+var getSeconds = require('date-fns/get_seconds')
 
 describe('dates with 5 seconds between', () => {
   test('to return 0 years', () => {
