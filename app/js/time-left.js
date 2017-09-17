@@ -19,7 +19,7 @@ const timeLeft = (function(argument) {
     minutesDiff = dateFns.getMinutes(goalDate) - dateFns.getMinutes(startDate);
     secondsDiff = dateFns.getSeconds(goalDate) - dateFns.getSeconds(startDate);
 
-// debugger
+debugger
 
     if (secondsDiff < 0) {
       secondsDiff = secondsDiff + 60;
@@ -35,7 +35,10 @@ const timeLeft = (function(argument) {
 
     if (hoursDiff < 0) {
       hoursDiff = hoursDiff + 24;
-      daysDiff = daysDiff - 1;
+
+      if (daysDiff !== 0) {
+        daysDiff = daysDiff - 1;
+      }
     }
 
     if (daysDiff < 0) {
@@ -45,7 +48,10 @@ const timeLeft = (function(argument) {
       const lastMonthBeforeGoal = dateFns.subMonths(goalDate, 1);
       const numberOfDaysInMonth = dateFns.getDaysInMonth(lastMonthBeforeGoal);
       daysDiff = daysDiff + numberOfDaysInMonth;
-      monthsDiff = monthsDiff - 1;
+
+      if (monthsDiff !== 0) {
+        monthsDiff = monthsDiff - 1;
+      }
     }
 
     return {

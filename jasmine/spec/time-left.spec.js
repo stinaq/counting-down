@@ -246,7 +246,7 @@ describe("Time left", function() {
         });
       });
     });
-    fdescribe('when the days are overlapping into another month', function() {
+    describe('when the days are overlapping into another month', function() {
       // Tuesday, 12 September 2017 19:57:36 GMT+02:00
       var startDate = 1505239056;
       // Monday, 9 October 2017 23:58:45 GMT+02:00
@@ -265,6 +265,94 @@ describe("Time left", function() {
           hours: 4,
           minutes: 1,
           seconds: 9
+        });
+      });
+    });
+    describe('when the days and hours are overlapping into another month and day', function() {
+      // Sunday, 14 May 2017 21:36:33 GMT+02:00
+      var startDate = 1494790593;
+      // Friday, 2 June 2017 06:42:55 GMT+02:00
+      var goalDate = 1496378575;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should have 0 years, 0 months, 18 days, 4 hours, 6 minutes, 22 seconds', function() {
+        expect(result).toEqual({
+          years: 0,
+          months: 0,
+          days: 18,
+          hours: 9,
+          minutes: 6,
+          seconds: 22
+        });
+      });
+    });
+    describe('when the days, hours, minutes are overlapping into another month, day, hour', function() {
+      // Saturday, 25 February 2017 21:13:04 GMT+01:00
+      var startDate = 1488053584;
+      // Tuesday, 7 March 2017 17:43:08 GMT+01:00
+      var goalDate = 1488904988;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should have 0 years, 0 months, 9 days, 20 hours, 30 minutes, 4 seconds', function() {
+        expect(result).toEqual({
+          years: 0,
+          months: 0,
+          days: 9,
+          hours: 20,
+          minutes: 30,
+          seconds: 4
+        });
+      });
+    });
+    fdescribe('when days and seconds overlap', function() {
+      // Thursday, 26 July 2001 20:30:40 GMT+02:00
+      var startDate = 996172240;
+      // Tuesday, 7 August 2001 21:40:20 GMT+02:00
+      var goalDate = 997213220;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should have 0 years, 0 months, 12 days, 1 hours, 9 minutes, 40 seconds', function() {
+        expect(result).toEqual({
+          years: 0,
+          months: 0,
+          days: 12,
+          hours: 1,
+          minutes: 9,
+          seconds: 40
+        });
+      });
+    });
+    describe('when all the parts overlap', function() {
+      // Friday, 17 November 2017 22:06:19 GMT+01:00
+      var startDate = 1510952779;
+      // Tuesday, 5 December 2017 04:02:10 GMT+01:00
+      var goalDate = 1512442930;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should have 0 years, 0 months, 17 days, 5 hours, 55 minutes, 51 seconds', function() {
+        expect(result).toEqual({
+          years: 0,
+          months: 0,
+          days: 17,
+          hours: 5,
+          minutes: 55,
+          seconds: 51
         });
       });
     });
