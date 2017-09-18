@@ -312,7 +312,7 @@ describe("Time left", function() {
         });
       });
     });
-    fdescribe('when days and seconds overlap', function() {
+    describe('when days and seconds overlap', function() {
       // Thursday, 26 July 2001 20:30:40 GMT+02:00
       var startDate = 996172240;
       // Tuesday, 7 August 2001 21:40:20 GMT+02:00
@@ -346,17 +346,62 @@ describe("Time left", function() {
       });
 
       it('should have 0 years, 0 months, 17 days, 5 hours, 55 minutes, 51 seconds', function() {
-        expect(result).toEqual({
-          years: 0,
-          months: 0,
-          days: 17,
-          hours: 5,
-          minutes: 55,
-          seconds: 51
-        });
+        expect(result).toEqual({ years: 0, months: 0, days: 17, hours: 5, minutes: 55, seconds: 51 });
       });
     });
   });
+  describe('When there are months, days, hours, minutes and seconds between the dates', function() {
+    describe('when the parts are all whole ', function() {
+      // Thursday, 7 August 1986 21:40:20 GMT+02:00
+      var startDate = 523827620;
+      // Sunday, 9 November 1986 22:45:29 GMT+01:00
+      var goalDate = 531956729;
+      var result;
 
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should have 0 years, 3 months, 2 days, 1 hours, 5 minutes, 9 seconds', function() {
+        expect(result).toEqual({ years: 0, months: 3, days: 2, hours: 1, minutes: 5, seconds: 9 });
+      });
+    });
+    describe('when the months overlap into another year', function() {
+      // Thursday, 20 November 1986 19:53:37 GMT+01:00
+      var startDate = 532896817;
+      // Friday, 20 February 1987 19:53:37 GMT+01:00
+      var goalDate = 540845617;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should still have 0 years, and correct number of months', function() {
+        expect(result).toEqual({ years: 0, months: 3, days: 0, hours: 0, minutes: 0, seconds: 0 });
+      });
+    });
+    describe('when the months and days overlap into the next respective part', function() {
+
+    });
+
+  });
+  fdescribe('When the dates have different time zones', function() {
+    describe('goal date is winter time and start date is summer time', function() {
+      // Tuesday, 18 September 1917 21:03:15 GMT+02:00
+      var startDate = -1649998605;
+      // Saturday, 2 March 1918 20:03:15 GMT+01:00
+      var goalDate = -1635742605;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should still have 0 years, and correct number of months and days', function() {
+        expect(result).toEqual({ years: 0, months: 5, days: 14, hours: 0, minutes: 0, seconds: 0 });
+      });
+    });
+  });
 
 });
