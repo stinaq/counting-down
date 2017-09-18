@@ -13,13 +13,12 @@ const timeLeft = (function(argument) {
 
     yearsDiff = dateFns.getYear(goalDate) - dateFns.getYear(startDate);
     monthsDiff = dateFns.getMonth(goalDate) - dateFns.getMonth(startDate);
-    // daysDiff = dateFns.differenceInCalendarDays(goalDate, startDate)
     daysDiff = dateFns.getDate(goalDate) - dateFns.getDate(startDate);
     hoursDiff = dateFns.getHours(goalDate) - dateFns.getHours(startDate);
     minutesDiff = dateFns.getMinutes(goalDate) - dateFns.getMinutes(startDate);
     secondsDiff = dateFns.getSeconds(goalDate) - dateFns.getSeconds(startDate);
 
-debugger
+// debugger
 
     if (secondsDiff < 0) {
       secondsDiff = secondsDiff + 60;
@@ -51,6 +50,14 @@ debugger
 
       if (monthsDiff !== 0) {
         monthsDiff = monthsDiff - 1;
+      }
+    }
+
+    if (monthsDiff < 0) {
+      monthsDiff = monthsDiff + 12;
+
+      if (yearsDiff !== 0) {
+        yearsDiff = yearsDiff - 1;
       }
     }
 
