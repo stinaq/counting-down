@@ -7,11 +7,19 @@ const Clock = (function(argument) {
     const goal = window.location.hash.substr(1);
 
     const tick = () => {
-      const secondsLeft = goal - Math.floor(Date.now() / 1000);
-      if (secondsLeft < 0) {
+      const now = Math.floor(Date.now() / 1000);
+      const left = timeLeft.pretty(now, goal)
+      if (left.isPassed) {
         clock.textContent = 'Has passed';
+        stopTick();
       } else {
-        clock.textContent = secondsLeft;
+        clock.textContent =
+          `Years: ${left.years}
+          Months: ${left.months}
+          Days: ${left.days}
+          Hours: ${left.days}
+          Minutes: ${left.minutes}
+          Seconds: ${left.seconds}`;
       }
     };
 
@@ -43,6 +51,7 @@ const Clock = (function(argument) {
     hide: () => {
       const clockView = document.getElementById(id);
       clockView.style.display = 'none';
+      stopTick();
     }
   }
 })();
