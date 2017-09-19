@@ -11,6 +11,12 @@ const timeLeft = (function(argument) {
         monthsDiff,
         yearsDiff;
 
+    if(dateFns.isBefore(goalDate, startDate)) {
+      return {
+        isPassed: true
+      };
+    }
+
     yearsDiff = dateFns.getYear(goalDate) - dateFns.getYear(startDate);
     monthsDiff = dateFns.getMonth(goalDate) - dateFns.getMonth(startDate);
     daysDiff = dateFns.getDate(goalDate) - dateFns.getDate(startDate);

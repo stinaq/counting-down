@@ -1,4 +1,43 @@
 describe("Time left", function() {
+  describe('when there is no time between the dates', function() {
+    // Tuesday, 5 September 2017 21:46:50 GMT+02:00
+    var startDate = 1504640810;
+    // Tuesday, 5 September 2017 21:46:50 GMT+02:00
+    var goalDate = 1504640810;
+    var result;
+
+    beforeEach(() => {
+      result = timeLeft.pretty(startDate, goalDate);
+    });
+
+    it('should have 0 years, 0 months, 0 days, 0 hours, 0 minutes, 0 seconds', function() {
+      expect(result).toEqual({
+        years: 0,
+        months: 0,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+      });
+    });
+  });
+  fdescribe('when the goal date is before the start date', function() {
+    // Tuesday, 19 September 2017 17:19:07 GMT+02:00
+    var startDate = 1505834347;
+    // Tuesday, 19 September 2017 17:19:04 GMT+02:00
+    var goalDate = 1505834344;
+    var result;
+
+    beforeEach(() => {
+      result = timeLeft.pretty(startDate, goalDate);
+    });
+    it('should have property saying date has passed', function() {
+      expect(result.isPassed).toBe(true);
+    });
+  });
+  describe('when the goal date is after the start date', function() {
+
+  });
   describe('when there are multiple seconds between the dates', function() {
     describe('and the seconds are inside one minute', () => {
       var startDate = 1504549527;
@@ -21,7 +60,7 @@ describe("Time left", function() {
       });
 
     });
-    fdescribe('when the seconds overlap into a different minute', function() {
+    describe('when the seconds overlap into a different minute', function() {
       // Tuesday, 5 September 2017 21:46:50 GMT+02:00
       var startDate = 1504640810;
       // Tuesday, 5 September 2017 21:47:10 GMT+02:00
