@@ -14,11 +14,16 @@ const timeLeft = (function(argument) {
     yearsDiff = dateFns.getYear(goalDate) - dateFns.getYear(startDate);
     monthsDiff = dateFns.getMonth(goalDate) - dateFns.getMonth(startDate);
     daysDiff = dateFns.getDate(goalDate) - dateFns.getDate(startDate);
-    hoursDiff = dateFns.getHours(goalDate) - dateFns.getHours(startDate);
+    hoursDiff = goalDate.getUTCHours() - startDate.getUTCHours();
     minutesDiff = dateFns.getMinutes(goalDate) - dateFns.getMinutes(startDate);
     secondsDiff = dateFns.getSeconds(goalDate) - dateFns.getSeconds(startDate);
 
-// debugger
+    /*
+    If any of the difference values are negative, that means that the time has overlaped
+    into the next minute/hour/day/month/year and that is has to be made positive by adding
+    the number that represents a whole minute/hour/day/month. It also means that the parent
+    time part has 1 too much and needs to be decreased
+    */
 
     if (secondsDiff < 0) {
       secondsDiff = secondsDiff + 60;

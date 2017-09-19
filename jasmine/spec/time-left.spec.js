@@ -1,5 +1,5 @@
 describe("Time left", function() {
-  describe('when there is only seconds between the dates', function() {
+  describe('when there are multiple seconds between the dates', function() {
     describe('and the seconds are inside one minute', () => {
       var startDate = 1504549527;
       var goalDate = 1504549532;
@@ -21,7 +21,7 @@ describe("Time left", function() {
       });
 
     });
-    describe('when the seconds overlap into a different minute', function() {
+    fdescribe('when the seconds overlap into a different minute', function() {
       // Tuesday, 5 September 2017 21:46:50 GMT+02:00
       var startDate = 1504640810;
       // Tuesday, 5 September 2017 21:47:10 GMT+02:00
@@ -45,7 +45,7 @@ describe("Time left", function() {
     });
 
   });
-  describe('when there is minutes and seconds between', function() {
+  describe('when there are multiple minutes between the dates', function() {
     describe('and the minutes and seconds are both inside one hour and one minute', function() {
       // Tuesday, 5 September 2017 22:35:30 GMT+02:00
       var startDate = 1504643730;
@@ -133,7 +133,7 @@ describe("Time left", function() {
 
   });
 
-  describe('when there is hours, minutes and seconds between the dates', function() {
+  describe('when there are multiple hours between the dates', function() {
     describe('when seconds, minutes and hours don\'t overlap into other seconds, minutes and hours', function() {
       // Wednesday, 6 September 2017 17:13:41 GMT+02:00
       var startDate = 1504710821;
@@ -223,7 +223,7 @@ describe("Time left", function() {
       });
     });
   });
-  describe('When there are days, hours, minutes and seconds between the dates', function() {
+  describe('When there are multiple days between the dates', function() {
     describe('and none of the parts are overlapping into the next day/hour and so on', function() {
       // Tuesday, 12 September 2017 19:57:36 GMT+02:00
       var startDate = 1505239056;
@@ -350,7 +350,7 @@ describe("Time left", function() {
       });
     });
   });
-  describe('When there are months, days, hours, minutes and seconds between the dates', function() {
+  describe('When there are multiple months between the dates', function() {
     describe('when the parts are all whole ', function() {
       // Thursday, 7 August 1986 21:40:20 GMT+02:00
       var startDate = 523827620;
@@ -363,7 +363,7 @@ describe("Time left", function() {
       });
 
       it('should have 0 years, 3 months, 2 days, 1 hours, 5 minutes, 9 seconds', function() {
-        expect(result).toEqual({ years: 0, months: 3, days: 2, hours: 1, minutes: 5, seconds: 9 });
+        expect(result).toEqual({ years: 0, months: 3, days: 2, hours: 2, minutes: 5, seconds: 9 });
       });
     });
     describe('when the months overlap into another year', function() {
@@ -381,12 +381,55 @@ describe("Time left", function() {
         expect(result).toEqual({ years: 0, months: 3, days: 0, hours: 0, minutes: 0, seconds: 0 });
       });
     });
-    describe('when the months and days overlap into the next respective part', function() {
+    describe('when all the parts overlap into the next part', function() {
+      // Thursday, 2 November 1978 20:03:15 GMT+01:00
+      var startDate = 278881395;
+      // Thursday, 1 February 1979 11:02:05 GMT+01:00
+      var goalDate = 286711325;
+      var result;
 
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should still have 0 years, and correct number of months', function() {
+        expect(result).toEqual({ years: 0, months: 2, days: 29, hours: 14, minutes: 58, seconds: 50 });
+      });
     });
-
   });
-  fdescribe('When the dates have different time zones', function() {
+  describe('when there are multiple years between the dates', function() {
+    describe('when all the parts are within its respective part', function() {
+      // Saturday, 3 February 1979 11:02:05 GMT+01:00
+      var startDate = 286884125;
+      // Saturday, 6 May 1995 14:05:10 GMT+02:00
+      var goalDate = 799761910;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should show correct number of years as well as the other parts', function() {
+        expect(result).toEqual({ years: 16, months: 3, days: 3, hours: 2, minutes: 3, seconds: 5 });
+      });
+    });
+    describe('when all the parts are overlapping into next part', function() {
+      // Saturday, 6 May 1995 14:05:10 GMT+02:00
+      var startDate = 799761910;
+      // Friday, 3 March 2017 08:02:07 GMT+01:00
+      var goalDate = 1488524527;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should show correct number of years as well as the other parts', function() {
+        expect(result).toEqual({ years: 21, months: 9, days: 24, hours: 18, minutes: 56, seconds: 57 });
+      });
+    });
+  });
+  describe('When the dates have different time zones', function() {
     describe('goal date is winter time and start date is summer time', function() {
       // Tuesday, 18 September 1917 21:03:15 GMT+02:00
       var startDate = -1649998605;
@@ -398,8 +441,23 @@ describe("Time left", function() {
         result = timeLeft.pretty(startDate, goalDate);
       });
 
-      it('should still have 0 years, and correct number of months and days', function() {
-        expect(result).toEqual({ years: 0, months: 5, days: 14, hours: 0, minutes: 0, seconds: 0 });
+      it('should normalize the hours', function() {
+        expect(result).toEqual({ years: 0, months: 5, days: 12, hours: 0, minutes: 0, seconds: 0 });
+      });
+    });
+    describe('goal date is summer time and start date is winter time', function() {
+      // Tuesday, 2 March 1937 20:03:15 GMT+01:00
+      var startDate = -1036126605;
+      // Wednesday, 2 June 1937 21:03:15 GMT+02:00
+      var goalDate = -1028177805;
+      var result;
+
+      beforeEach(() => {
+        result = timeLeft.pretty(startDate, goalDate);
+      });
+
+      it('should normalize the hours', function() {
+        expect(result).toEqual({ years: 0, months: 3, days: 0, hours: 0, minutes: 0, seconds: 0 });
       });
     });
   });
