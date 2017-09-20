@@ -21,7 +21,7 @@ describe("Time left", function() {
       });
     });
   });
-  fdescribe('when the goal date is before the start date', function() {
+  describe('when the goal date is before the start date', function() {
     // Tuesday, 19 September 2017 17:19:07 GMT+02:00
     var startDate = 1505834347;
     // Tuesday, 19 September 2017 17:19:04 GMT+02:00
@@ -131,7 +131,7 @@ describe("Time left", function() {
       // Wednesday, 6 September 2017 20:52:57 GMT+02:00
       var startDate = 1504723977;
       // Wednesday, 6 September 2017 21:03:59 GMT+02:00
-      var goalDate = 1504721039;
+      var goalDate = 1504724639;
       var result;
 
       beforeEach(() => {

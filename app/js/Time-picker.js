@@ -1,6 +1,7 @@
 const TimePicker = (function(argument) {
   const id = 'TIME_PICKER';
   const startCountdown = () => {
+    // debugger
     const date = document.querySelector('#TIME_PICKER_data-input').value;
     const timeStamp = Math.floor(new Date(date) / 1000);
     window.location.hash = timeStamp;
@@ -19,6 +20,12 @@ const TimePicker = (function(argument) {
 
       const startButton = document.querySelector('#TIME_PICKER_start-button');
       startButton.addEventListener('click', startCountdown);
+
+      flatpickr("#TIME_PICKER_data-input", {
+        enableTime: true,
+        time_24hr: true,
+        minDate: "today"
+      });
     },
     hide: () => {
       const timePickerView = document.getElementById(id);

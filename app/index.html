@@ -5,6 +5,7 @@
     <title>Counting Down</title>
     <meta name="description" content="Countingdown helps you count down to important or unimportant events in your life. When the pizza should arrive, how long it is until your birthday or when your child is due.">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
   </head>
 
   <body>
@@ -14,6 +15,8 @@
     <!-- <script type="text/javascript" src="node_modules/moment/min/moment.min.js"></script> -->
     <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
 
+    <script src="https://unpkg.com/flatpickr"></script>
+
     <script type="text/javascript" src="js/time-left.js"></script>
     <script type="text/javascript" src="js/Clock.js"></script>
     <script type="text/javascript" src="js/Time-picker.js"></script>
@@ -21,7 +24,7 @@
 
     <div id="TIME_PICKER">
       <h2>Time picker</h2>
-      <input type="date" id="TIME_PICKER_data-input">
+      <input type="date" placeholder="Pick a time and date" id="TIME_PICKER_data-input">
       <button id="TIME_PICKER_start-button">Starta nerräkning</button>
     </div>
 

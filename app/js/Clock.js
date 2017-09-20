@@ -6,6 +6,18 @@ const Clock = (function(argument) {
     const clock = mainElement.querySelector('#clock');
     const goal = window.location.hash.substr(1);
 
+    const printTimeLeft = (left) => {
+      clock.textContent =
+        `
+          Years: ${left.years},
+          Months: ${left.months},
+          Days: ${left.days},
+          Hours: ${left.days},
+          Minutes: ${left.minutes},
+          Seconds: ${left.seconds}
+        `;
+    };
+
     const tick = () => {
       const now = Math.floor(Date.now() / 1000);
       const left = timeLeft.pretty(now, goal)
@@ -13,13 +25,7 @@ const Clock = (function(argument) {
         clock.textContent = 'Has passed';
         stopTick();
       } else {
-        clock.textContent =
-          `Years: ${left.years}
-          Months: ${left.months}
-          Days: ${left.days}
-          Hours: ${left.days}
-          Minutes: ${left.minutes}
-          Seconds: ${left.seconds}`;
+        printTimeLeft(left);
       }
     };
 
