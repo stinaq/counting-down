@@ -18,6 +18,7 @@
     <script src="https://unpkg.com/flatpickr"></script>
 
     <script type="text/javascript" src="js/time-left.js"></script>
+    <script type="text/javascript" src="js/Parse-hash.js"></script>
     <script type="text/javascript" src="js/Clock.js"></script>
     <script type="text/javascript" src="js/Time-picker.js"></script>
     <script type="text/javascript" src="js/framework.js"></script>
@@ -25,11 +26,12 @@
     <div id="TIME_PICKER">
       <h2>Time picker</h2>
       <input type="date" placeholder="Pick a time and date" id="TIME_PICKER_data-input">
+      <input type="test" placeholder="To what?" id="TIME_PICKER_title">
       <button id="TIME_PICKER_start-button">Starta nerräkning</button>
     </div>
 
     <div id="TICKING_CLOCK">
-      <h1>Klockan</h1>
+      <h2>Räknar ner till <span id="CLOCK_title"></span></h2>
       <span id="clock"></span>
     </div>
 

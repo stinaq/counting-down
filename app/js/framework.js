@@ -24,6 +24,7 @@
 })();
 
 let AppState = (() => {
+
   let allThings = {};
 
   window.addEventListener('hashchange', () => {

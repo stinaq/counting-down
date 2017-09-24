@@ -3,8 +3,10 @@ const Clock = (function(argument) {
   let tickerInterval;
 
   const startTick = (mainElement) => {
+    const urlParts = ParseHash();
     const clock = mainElement.querySelector('#clock');
-    const goal = window.location.hash.substr(1);
+    const titleElement = mainElement.querySelector('#CLOCK_title');
+    titleElement.textContent = urlParts.title;
 
     const printTimeLeft = (left) => {
       clock.textContent =
@@ -20,7 +22,7 @@ const Clock = (function(argument) {
 
     const tick = () => {
       const now = Math.floor(Date.now() / 1000);
-      const left = timeLeft.pretty(now, goal)
+      const left = timeLeft.pretty(now, urlParts.goal)
       if (left.isPassed) {
         clock.textContent = 'Has passed';
         stopTick();
@@ -47,7 +49,8 @@ const Clock = (function(argument) {
 
       /* Show if everything after the hash is a number,
          meaning it could be timestamp to show */
-      return isNumeric && isSomething;
+      // return isNumeric && isSomething;
+      return isSomething;
     },
     show: () => {
       const clockView = document.getElementById(id);

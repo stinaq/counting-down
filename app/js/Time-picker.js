@@ -3,8 +3,9 @@ const TimePicker = (function(argument) {
   const startCountdown = () => {
     // debugger
     const date = document.querySelector('#TIME_PICKER_data-input').value;
+    const title = document.querySelector('#TIME_PICKER_title').value;
     const timeStamp = Math.floor(new Date(date) / 1000);
-    window.location.hash = timeStamp;
+    window.location.hash = `goal=${timeStamp}&title=${title}`;
   };
 
   return {
