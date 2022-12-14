@@ -14,7 +14,7 @@ const Clock = (function(argument) {
           Years: ${left.years},
           Months: ${left.months},
           Days: ${left.days},
-          Hours: ${left.days},
+          Hours: ${left.hours},
           Minutes: ${left.minutes},
           Seconds: ${left.seconds}
         `;
